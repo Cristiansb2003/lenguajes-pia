@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 # Conexión a la base de datos
 db = mysql.connector.connect(
-    host="mysql-pia-contenedor",
+    #host="mysql-pia-contenedor",
     user="cristian",
     password="12345678",
     database="pia_lenguajes",
