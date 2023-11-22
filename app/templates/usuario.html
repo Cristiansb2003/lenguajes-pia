@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles de Usuario</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #fafafa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            justify-content: center;
+        }
+
+        .card {
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        input[type="submit"] {
+            background-color: #ed4956;
+            color: #fff;
+            cursor: pointer;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 4px;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        button {
+            background-color: #3897f0;
+            color: #fff;
+            cursor: pointer;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Detalles de Usuario</h1>
+        <p>Nombre: {{ usuario.nombre }}</p>
+        <p>Correo Electrónico: {{ usuario.correo_electronico }}</p>
+        <p>Contraseña: {{ usuario.contrasena }}</p>
+        
+        <!-- Botones para eliminar y editar -->
+        <form method="post" action="{{ url_for('eliminar_usuario', user_id=usuario.id) }}">
+            <input type="submit" value="Eliminar Usuario">
+        </form>
+
+        <a href="{{ url_for('editar_usuario', user_id=usuario.id) }}">
+            <button>Editar Usuario</button>
+        </a>
+    </div>
+</body>
+</html>

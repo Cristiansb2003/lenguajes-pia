@@ -1,0 +1,11 @@
+# Utiliza una imagen base de MySQL
+FROM mysql:latest
+
+# Variables de entorno para configurar la base de datos y el usuario
+ENV MYSQL_DATABASE=pia_lenguajes \
+    MYSQL_ROOT_PASSWORD=admin \
+    MYSQL_USER=cristian \
+    MYSQL_PASSWORD=12345678
+
+# Copia el script SQL que crea la tabla a la carpeta de inicio del contenedor
+COPY ./crear-tabla.sql /docker-entrypoint-initdb.d/

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Usuarios</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #fafafa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1, h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        form {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            margin-top:15px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #3897f0;
+            color: #fff;
+            cursor: pointer;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            font-size: 16px;
+            margin-top:16px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .b{
+            background-color: rgb(96 166 255);
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 9px;
+            border-radius: 4px;
+            font-size: 14px;
+            margin-left: 12px;
+        }
+
+        .b a{
+            text-decoration:none;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Agregar Nuevo Usuario</h1>
+    <form method="post" action="{{ url_for('crear_usuario') }}">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+
+        <label for="correo">Correo Electrónico:</label>
+        <input type="email" id="correo" name="correo_electronico" required>
+
+        <label for="contrasena">Contraseña:</label>
+        <input type="password" id="contrasena" name="contrasena" required>
+
+        <input type="submit" value="Agregar Usuario">
+    </form>
+
+    <h2>Listado de Usuarios</h2>
+    <ul>
+        {% for usuario in usuarios %}
+            <li>
+                <span>{{ usuario.nombre }} - {{ usuario.correo_electronico }}</span>
+                <div class="b"> <a href="{{ url_for('get_usuario', user_id=usuario.id) }}">Ver Detalles</a></div>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
